@@ -1,27 +1,19 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-import NavBar from './componentes/navbar'
-import Items from './componentes/Items'
-
+import {Route , Routes} from 'react-router'
+import ItemListContainer from './pages/ItemListContainer'
+import CartWidget from './componentes/header/CartWidget'
+import ItemList from './componentes/ItemList/Itemlist'
+import ItemDetail from './pages/ItemDetail'
+import Home from './pages/Home'
 
 function App() {
-
   return (
-    <>
-      <NavBar/>
-
-      <Items producto="producto 1"/>
-      <Items producto="producto 2"/>
-      <Items producto="producto 3"/>
-      <Items producto="producto 4"/>
-      <Items producto="producto 5"/>
-      <Items producto="producto 6"/>
-
-      <img src="/assets/logo-temporal.png" alt="" />
-    </>
-  )
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/lista/:marca" element={<ItemListContainer />} />
+        <Route path="/lista/:marca/:categoria" element={<ItemDetail />} />
+      </Routes>
+  );
 }
 
 export default App
