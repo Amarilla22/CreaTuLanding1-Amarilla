@@ -1,5 +1,7 @@
+import { addDoc, collection, getDoc, getDocs, query } from "firebase/firestore";
+import { db } from "../config/firebase";
 
-[
+const productos = [
   {
     "marca": "AMD",
     "categoria": "Procesadores",
@@ -85,3 +87,18 @@
     "imagen": "https://via.placeholder.com/150"
   }
 ]
+
+
+
+export const subirProductos = async () => {
+  const productosRef = collection(db, "productos");
+  for (const producto of productos) {
+    try {
+      await addDoc(productosRef, producto);
+      console.log(`✅ "${producto.nombre}" subido correctamente`);
+    } catch (error) {
+      console.error(`❌ Error al subir ${producto.nombre}:`, error);
+    }
+  }
+};
+

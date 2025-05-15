@@ -1,11 +1,14 @@
-import react from 'react'
+import { Link } from "react-router"
+import { UseGlobalStates } from "../../context/Context"
 
 const CartWidget = () => {
+    const {calcularItems} = UseGlobalStates()
+
     return(
         <div>
-            <h3>
-                🛒 <span>0</span>
-            </h3>
+            <Link to='/cart'> 
+                🛒 <span>{calcularItems}</span>
+            </Link>
         </div>
     ) 
 }

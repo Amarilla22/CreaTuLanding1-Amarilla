@@ -1,19 +1,25 @@
-import react, { use } from 'react'
-import { useEffect,useState } from 'react'
+import {useState } from 'react'
+import Counter from './Counter';
+import { UseGlobalStates } from '../../context/Context';
 
 
 const ItemList = ({ marca, categoria }) => {
-    const [productos, setProductos] = useState([]);
+
+    const [counter, setcounter] = useState(0)
+    const {cart, setcart,productos} = UseGlobalStates()
+
     let filtrado = []
-
-    useEffect(() => {
-        fetch("/productos.json")
-            .then(res => res.json())
-            .then(data => setProductos(data))
-    }, [])
+  
  
+    const addcart = () => {
+      setcart([...cart, {...productos, cantidad: counter}]) 
+    }
+   
+    //La idea seria borrar lo de AMD e intel y poner solamente las categorias, poner un detalle del producto
+    // y ahi agregar el carrito
 
-    if(categoria== 0 ){
+
+    if(categoria == 0 ){
         filtrado = productos.filter((prod) => prod.marca == marca)
         return (
             <div>
@@ -22,6 +28,8 @@ const ItemList = ({ marca, categoria }) => {
                 <div key={prod.nombre}>
                   <h4>{prod.nombre}</h4>
                   <h5>Precio: {prod.precio}</h5>
+                  <Counter stock={prod.stock} counter={counter} setcounter={setcounter} />
+                  <button onClick={addcart} disabled={counter == 0}>Agregar al carrito</button>
                 </div>
               ))}  
             </div>
@@ -35,6 +43,8 @@ const ItemList = ({ marca, categoria }) => {
                 <div key={prod.nombre}>
                   <h4>{prod.nombre}</h4>
                   <h5>Precio: {prod.precio}</h5>
+                  <Counter stock={prod.stock} counter={counter} setcounter={setcounter} />
+                  <button onClick={addcart} disabled={counter == 0}>Agregar al carrito</button>
                 </div>
               ))}  
             </div>

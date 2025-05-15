@@ -6,11 +6,12 @@ import { useParams } from 'react-router'
 
 const ItemDetail = () => {
     const { marca, categoria } = useParams();
+    
   
     return (
       <div>
         <NavBar />
-        <ItemList marca={marca} categoria={categoria} />
+         <ItemList marca={marca} categoria={categoria} />
       </div>
     );
   };
