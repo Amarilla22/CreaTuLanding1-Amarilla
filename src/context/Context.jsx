@@ -11,17 +11,6 @@ const ContextProvider = ({children}) => {
     const [productos, setProductos] = useState([]);
     const [loading, setLoading] = useState(true)
 
-    
-    useEffect(() => {
-        setLoading(true)
-        getProducts().then(res => {
-            console.log(res)
-            setProductos(res)
-            setLoading(false)
-        })
-            
-    }, [])
-
    
     const calcularItems = cart.reduce((total, prod) => {
         return total + prod.cantidad
@@ -32,7 +21,7 @@ const ContextProvider = ({children}) => {
     }, 0)
 
     return ( 
-        <GlobalState.Provider value= {{cart ,setcart,productos,loading,setLoading,total,setTotal,calcularItems,calcularTotal}}> 
+        <GlobalState.Provider value= {{cart ,setcart,productos,loading,setLoading,total,setTotal,calcularItems,calcularTotal, setProductos}}> 
             {children} 
         </GlobalState.Provider>
     )

@@ -1,15 +1,15 @@
-import { addDoc, collection, getDoc, getDocs, query } from "firebase/firestore";
+import { addDoc, collection, getDoc, getDocs, query, where } from "firebase/firestore";
 import { db } from "../config/firebase";
 
 export const getProducts = async () => {
-    const prodCollection = collection(db, "Productos")
+    const prodCollection = collection(db, "productos")
     const productos = await getDocs(prodCollection)
     return (productos.docs.map((doc) => ({ id: doc.id, ...doc.data()})))
 }
 
 //Obtener un producto por id de la base de datos
 export const getproductsbyid = async (id) => {  
-    const prodDoc = doc(db, "Productos",id)
+    const prodDoc = doc(db, "productos",id)
     const producto = await getDoc(prodDoc)
     return { id: producto.id, ...producto.data()}
 }
@@ -26,9 +26,9 @@ export const createOrder = async (newOrder) => {
 }
 
 //filtrar por categoria
-export const getByCategoty = async categoty => {
-    const prodCollection = collection(db,'Productos')
-    const q = query(prodCollection, where('category','==',category)) 
+export const getByCategory = async category => {
+    const prodCollection = collection(db,'productos')
+    const q = query(prodCollection, where('categoria','==',category)) 
     const productos = await getDocs(q)
     return (productos.docs.map((doc) => ({ id: doc.id, ...doc.data()})))
 }

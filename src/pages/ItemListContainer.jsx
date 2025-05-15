@@ -1,32 +1,32 @@
-import react from 'react'
+import {useEffect} from 'react'
 import NavBar from '../componentes/header/NavBar'
-import { useParams,Link } from 'react-router'
-import { getByCategoty, getProducts } from '../service/firebaseservice';
+import { useParams} from 'react-router'
+import { getByCategory, getProducts } from '../service/firebaseservice';
+import { UseGlobalStates } from '../context/Context';
+import ItemList from '../componentes/ItemList/Itemlist';
 
-const categoria = ['Procesadores', 'Graficas', 'Placas'];
+
 
 const ItemListContainer = () => {
-  const { marca } = useParams();
-/* 
+  const { categoria } = useParams();
+  const {setLoading, setProductos,productos} = UseGlobalStates()
      useEffect(() => {
          setLoading(true)
-         const fetchLista = categoria ? getByCategoty :  getProducts
+         const fetchLista = categoria ? getByCategory :  getProducts
          fetchLista(categoria).then(res => {
              console.log(res)
              setProductos(res)
              setLoading(false)
          })
              
-     }, [])
-*/
+     }, [categoria])
+
 // esto hay que revisarlo
   return (
     <div>
       <NavBar />
-      <h2>Categorías de {marca}</h2>
-      {categoria.map((cat) => (
-        <Link className='text-dark' key={cat} to={`/lista/${marca}/${cat}`}> <h3>{cat}</h3> </Link>
-      ))}
+      
+      <ItemList productos={productos} categoria={categoria}/>
     </div>
   );
 };

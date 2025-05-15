@@ -1,17 +1,16 @@
 import './App.css'
 import {Route , Routes} from 'react-router'
 import ItemListContainer from './pages/ItemListContainer'
-import ItemDetail from './pages/ItemDetail'
-import Home from './pages/Home'
 import Cart from './pages/cart'
 import Chekout from './pages/Chekout'
+import ItemDetailContainer from './pages/ItemDetailContainer'
 
 function App() {
   return (
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/lista/:marca" element={<ItemListContainer />} />
-        <Route path="/lista/:marca/:categoria" element={<ItemDetail />} />
+        <Route path="/" element={<ItemListContainer />} />
+        <Route path="/categoria" element={<ItemListContainer />} />
+        <Route path="/producto" element={<ItemDetailContainer />} />
         <Route path='/cart' element={<Cart/>} />
         <Route path='/chekout' element={<Chekout/>}/>
       </Routes>
