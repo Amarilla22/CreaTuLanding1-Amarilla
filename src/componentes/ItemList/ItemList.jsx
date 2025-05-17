@@ -1,9 +1,9 @@
-import react from "@vitejs/plugin-react-swc";
+import react from 'react'
 import { Link } from "react-router";
 
 const ItemList = ({productos}) => {
 
-    
+ 
 
    return(
     <div>
@@ -13,6 +13,7 @@ const ItemList = ({productos}) => {
           <h4>{prod.nombre}</h4>
           <h4>{prod.marca} </h4>
           <h5>Precio: {prod.precio}</h5>
+          <Link to={`/${prod.id}`}>Ver en detalle</Link>
         </div>
       ))}
     </div>

@@ -9,8 +9,7 @@ function App() {
   return (
       <Routes>
         <Route path="/" element={<ItemListContainer />} />
-        <Route path="/categoria" element={<ItemListContainer />} />
-        <Route path="/producto" element={<ItemDetailContainer />} />
+        <Route path="/:id" element={<ItemDetailContainer />} />
         <Route path='/cart' element={<Cart/>} />
         <Route path='/chekout' element={<Chekout/>}/>
       </Routes>

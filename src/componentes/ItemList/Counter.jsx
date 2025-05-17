@@ -1,4 +1,4 @@
-import react, {useState} from 'react'
+import React from "react"
 
 const Counter = ({stock,counter,setcounter}) => {
     

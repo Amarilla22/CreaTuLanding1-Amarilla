@@ -10,11 +10,11 @@ import ItemList from '../componentes/ItemList/Itemlist';
 const ItemListContainer = () => {
   const { categoria } = useParams();
   const {setLoading, setProductos,productos} = UseGlobalStates()
+
      useEffect(() => {
          setLoading(true)
          const fetchLista = categoria ? getByCategory :  getProducts
          fetchLista(categoria).then(res => {
-             console.log(res)
              setProductos(res)
              setLoading(false)
          })
@@ -26,7 +26,7 @@ const ItemListContainer = () => {
     <div>
       <NavBar />
       
-      <ItemList productos={productos} categoria={categoria}/>
+      <ItemList productos={productos}/>
     </div>
   );
 };
