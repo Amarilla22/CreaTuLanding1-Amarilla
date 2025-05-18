@@ -14,8 +14,8 @@ const NavBar = () => {
                         <a className="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Ir a</a>
                         <ul className="dropdown-menu">
                             <li><Link className='text-dark' to="/">Home</Link></li>
-                            <li><Link className='text-dark' to={"/lista/AMD/0"} >Productos AMD</Link></li>
-                            <li><Link className='text-dark' to={"/lista/Intel/0"} >Productos Intel</Link></li>
+                            <li><Link className='text-dark' to={"/AMD"} >Productos AMD</Link></li>
+                            <li><Link className='text-dark' to={"/Intel"} >Productos Intel</Link></li>
                         </ul>
                     </div>
                     <CartWidget/>

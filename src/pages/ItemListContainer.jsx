@@ -11,17 +11,18 @@ const ItemListContainer = () => {
   const { categoria } = useParams();
   const {setLoading, setProductos,productos} = UseGlobalStates()
 
-     useEffect(() => {
-         setLoading(true)
-         const fetchLista = categoria ? getByCategory :  getProducts
-         fetchLista(categoria).then(res => {
-             setProductos(res)
-             setLoading(false)
-         })
-             
+
+    useEffect(() => {
+        setLoading(true)
+        const fetchLista = categoria ? getByCategory :  getProducts
+        fetchLista(categoria).then(res => {
+          setProductos(res)
+          setLoading(false)   
+
+         })        
      }, [categoria])
 
-// esto hay que revisarlo
+     // esto hay que revisarlo
   return (
     <div>
       <NavBar />

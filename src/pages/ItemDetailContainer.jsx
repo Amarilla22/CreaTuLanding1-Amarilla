@@ -16,7 +16,6 @@ const ItemDetailContainer = () => {
     useEffect(() => {
         getproductsbyid(id).then(res => {
         setProductos(res)
-        console.log(res)
         })
     },[])
 

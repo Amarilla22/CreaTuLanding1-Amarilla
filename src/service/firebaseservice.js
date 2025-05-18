@@ -26,9 +26,9 @@ export const createOrder = async (newOrder) => {
 }
 
 //filtrar por categoria
-export const getByCategory = async category => {
+export const getByCategory = async marca => {
     const prodCollection = collection(db,'productos')
-    const q = query(prodCollection, where('categoria','==',category)) 
+    const q = query(prodCollection, where('marca','==',marca)) 
     const productos = await getDocs(q)
     return (productos.docs.map((doc) => ({ id: doc.id, ...doc.data()})))
 }
