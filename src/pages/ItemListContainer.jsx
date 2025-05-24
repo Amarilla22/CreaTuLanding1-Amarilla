@@ -8,7 +8,7 @@ import ItemList from '../componentes/ItemList/Itemlist';
 
 
 const ItemListContainer = () => {
-  const { categoria } = useParams();
+  const { categoria } = useParams()
   const {setLoading, setProductos,productos} = UseGlobalStates()
 
 

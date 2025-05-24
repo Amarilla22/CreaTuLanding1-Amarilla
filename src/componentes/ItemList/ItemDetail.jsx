@@ -24,7 +24,5 @@ const ItemDetail = ({producto}) =>{
     )
 }
 
-//<Counter stock={prod.stock} counter={counter} setcounter={setcounter} />
-//<button onClick={addcart} disabled={counter == 0}>Agregar al carrito</button>
 
 export default ItemDetail

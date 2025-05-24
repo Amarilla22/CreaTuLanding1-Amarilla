@@ -9,8 +9,8 @@ function App() {
   return (
       <Routes>
         <Route path="/" element={<ItemListContainer />} />
-        <Route path="/:categoria" element={<ItemListContainer />} />
-        <Route path="/:categoria/:id" element={<ItemDetailContainer />} />
+        <Route path="/marca/:categoria" element={<ItemListContainer />} />
+        <Route path="/item/:id" element={<ItemDetailContainer />} />
         <Route path='/cart' element={<Cart/>} />
         <Route path='/chekout' element={<Chekout/>}/>
       </Routes>

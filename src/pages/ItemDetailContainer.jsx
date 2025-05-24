@@ -3,19 +3,20 @@ import NavBar from '../componentes/header/NavBar'
 import ItemDetail from '../componentes/ItemList/ItemDetail';
 import { getproductsbyid } from '../service/firebaseservice';
 import { useParams} from 'react-router'
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { UseGlobalStates } from '../context/Context';
 
 
 const ItemDetailContainer = () => {
     const {id} = useParams()
-    const {setProductos,productos} = UseGlobalStates()
+    const [itemdetail, setItemDetail] = useState([])
+    //const {setProductos,productos} = UseGlobalStates()
 
 
 
     useEffect(() => {
         getproductsbyid(id).then(res => {
-        setProductos(res)
+        setItemDetail(res)
         })
     },[])
 
@@ -24,7 +25,7 @@ const ItemDetailContainer = () => {
       <div>
         <NavBar/>
 
-        <ItemDetail producto = {productos}/>
+        <ItemDetail producto = {itemdetail}/>
       </div>
     );
   };

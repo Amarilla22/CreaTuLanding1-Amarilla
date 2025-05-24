@@ -3,7 +3,7 @@ import { UseGlobalStates } from '../context/Context'
 import { createOrder } from '../service/firebaseservice'
 
 const Chekout = () => {
-    const {cart, calcularTotal} = UseGlobalStates
+    const {cart,total, calcularTotal} = UseGlobalStates
     const [user,  setUser] = useState({
         name: '',
         email: '',
@@ -16,16 +16,15 @@ const Chekout = () => {
         event.preventDefault() 
         let newOrder = {
             buyer: user,
-            total: calcularTotal,
+            total: total,
             items:cart,
             date: new Date()
         }
-
         //creamos nueva orden
         createOrder(newOrder).then((res) => {
-            
+            console.log(res)
         }).catch((error) => {
-            
+            console.log(error)
             alert("Error al crear orden de compra")
         })
 

@@ -7,7 +7,7 @@ export const GlobalState = createContext()
 
 const ContextProvider = ({children}) => {
     const [cart, setcart] = useState([])
-    const [total, setTotal] = useState([])
+    const [total, setTotal] = useState(0)
     const [productos, setProductos] = useState([]);
     const [loading, setLoading] = useState(true)
 
