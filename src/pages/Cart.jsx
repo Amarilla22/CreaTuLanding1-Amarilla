@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 
 const Cart = () => {
     const {cart, calcularTotal} = UseGlobalStates()
-
+    console.log(cart)
     return(
         <div>
             {cart.map((prod,index) => (

@@ -1,7 +1,7 @@
 import './App.css'
 import {Route , Routes} from 'react-router'
 import ItemListContainer from './pages/ItemListContainer'
-import Cart from './pages/cart'
+import Cart from './pages/Cart'
 import Chekout from './pages/Chekout'
 import ItemDetailContainer from './pages/ItemDetailContainer'
 

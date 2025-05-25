@@ -3,32 +3,29 @@ import { UseGlobalStates } from '../context/Context'
 import { createOrder } from '../service/firebaseservice'
 
 const Chekout = () => {
-    const {cart,total, calcularTotal} = UseGlobalStates
+    const {cart, calcularTotal} = UseGlobalStates()
     const [user,  setUser] = useState({
-        name: '',
-        email: '',
-        tel: '',
-        domicilio: '',
-        birthdate: '',
+        name: 'Aantiago',
+        email: 'santi@hotmail.com',
+        tel: '1153975247', 
     })
-
-    const handlesumbit = (event) => {
+    const handlesumbit = event => {
         event.preventDefault() 
         let newOrder = {
             buyer: user,
-            total: total,
+            total: calcularTotal,
             items:cart,
             date: new Date()
         }
         //creamos nueva orden
         createOrder(newOrder).then((res) => {
             console.log(res)
+            alert('Compra realizada')
         }).catch((error) => {
             console.log(error)
             alert("Error al crear orden de compra")
         })
 
-        alert('Compra realizada') //Esto hay que mejorarlo con una sweetalert
     }
 
     return(

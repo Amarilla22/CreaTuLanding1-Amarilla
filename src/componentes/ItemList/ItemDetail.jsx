@@ -9,7 +9,7 @@ const ItemDetail = ({producto}) =>{
     const {cart, setcart} = UseGlobalStates()
 
     const addcart = () => {
-        setcart([...cart, {...productos, cantidad: counter}])
+        setcart([...cart, {...producto, cantidad: counter}])
     }
 
     return(
@@ -19,7 +19,7 @@ const ItemDetail = ({producto}) =>{
             <h3>${producto.precio}</h3>
             <Counter stock = {producto.Stock} counter = {counter} setcounter={setcounter}/>
             <br/>
-            <button>Agregar al carrito</button>
+            <button onClick={addcart}>Agregar al carrito</button>
         </div>
     )
 }

@@ -1,4 +1,4 @@
-import { addDoc, collection, getDoc, getDocs, query, where,doc } from "firebase/firestore";
+import { addDoc, collection, getDoc, getDocs, query, where,doc, updateDoc } from "firebase/firestore";
 import { db } from "../config/firebase";
 
 export const getProducts = async () => {
@@ -17,7 +17,7 @@ export const getproductsbyid = async (id) => {
 //Agregar una orden a la base de datos
 export const createOrder = async (newOrder) => {
     try{
-        const orderCollection = collection(db,'Ordenes')
+        const orderCollection = collection(db, 'Ordenes')
         const orderDoc = await addDoc(orderCollection, newOrder)
         return orderDoc
     } catch(error){
@@ -31,4 +31,14 @@ export const getByCategory = async marca => {
     const q = query(prodCollection, where('marca','==',marca)) 
     const productos = await getDocs(q)
     return (productos.docs.map((doc) => ({ id: doc.id, ...doc.data()})))
+}
+
+export const updatestock = async (id, stock) => {
+    try{
+        const prodDoc = doc(db,'productos',id)
+        const result = await updateDoc(prodDoc, {stock: prodDoc.Stock - stock})
+        return result
+    }catch(error){
+        throw new Error(error)
+    }
 }
